@@ -14,6 +14,7 @@ export default function Home() {
       <Box
         borderColor={borderColor}
         borderWidth={2.5}
+        height={"100%"}
       >
         <OpeningHtmlTag />
         <ToggleSnowButton
