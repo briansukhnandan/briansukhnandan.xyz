@@ -241,6 +241,36 @@ const ProjectsAndHackathonsBody = () => {
             <Tr>
               <HyperlinkedTableCell
                 color={DEFAULT_LINK_COLOR}
+                text="Where is the Train?"
+                url="https://github.com/briansukhnandan/where-is-the-train"
+              />
+              <Td>
+                A train tracker for the NYC Subway which parses the MTA's realtime GTFS feeds in a digestable format.
+                <br />
+                <a href="https://www.whereisthetrain.lol/" style={{ color: "#00ffd1" }}>
+                  Click here to see it live!
+                </a>
+              </Td>
+              <Td>React</Td>
+            </Tr>
+            <Tr>
+              <HyperlinkedTableCell
+                color={DEFAULT_LINK_COLOR}
+                text="Solar System Simulator"
+                url="https://github.com/briansukhnandan/solar-system-simulator"
+              />
+              <Td>
+                A Solar System simulator written in React + Three Fiber. Allows for interactivity with Orbit Controls! See the README for more details.
+                <br />
+                <a href="https://solar-system-sim.vercel.app/" style={{ color: "#00ffd1" }}>
+                  Click here to see it live!
+                </a>
+              </Td>
+              <Td>React, Three Fiber</Td>
+            </Tr>
+            <Tr>
+              <HyperlinkedTableCell
+                color={DEFAULT_LINK_COLOR}
                 text="Chip-8 Emulator"
                 url="https://github.com/briansukhnandan/chip8"
               />
@@ -262,33 +292,6 @@ const ProjectsAndHackathonsBody = () => {
                 pure Bash. Features support for Halo Reach, CE, 2, and 3.
               </Td>
               <Td>Bash</Td>
-            </Tr>
-            <Tr>
-              <HyperlinkedTableCell
-                color={DEFAULT_LINK_COLOR}
-                text="Solar System Simulator"
-                url="https://github.com/briansukhnandan/solar-system-simulator"
-              />
-              <Td>
-                A Solar System simulator written in React + Three Fiber. Allows for interactivity with Orbit Controls! See the README for more details.
-                <br />
-                <a href="https://solar-system-sim.vercel.app/" style={{ color: "#00ffd1" }}>
-                  Click here to see it live!
-                </a>
-              </Td>
-              <Td>React, Three Fiber</Td>
-            </Tr>
-            <Tr>
-              <HyperlinkedTableCell
-                color={DEFAULT_LINK_COLOR}
-                text="seatv (w.i.p)"
-                url="https://github.com/briansukhnandan/seatv"
-              />
-              <Td>
-                A Letterboxd clone but for TV shows. Pulls information regarding 
-                TV shows from TheMovieDB&apos;s API.
-              </Td>
-              <Td>React, Express, TypeScript</Td>
             </Tr>
             <Tr>
               <HyperlinkedTableCell
