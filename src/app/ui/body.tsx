@@ -245,7 +245,7 @@ const ProjectsAndHackathonsBody = () => {
                 url="https://github.com/briansukhnandan/where-is-the-train"
               />
               <Td>
-                A train tracker for the NYC Subway which parses the MTA's realtime GTFS feeds in a digestable format.
+                A train tracker for the NYC Subway which parses the MTA&apos;s realtime GTFS feeds in a digestable format.
                 <br />
                 <a href="https://www.whereisthetrain.lol/" style={{ color: "#00ffd1" }}>
                   Click here to see it live!
