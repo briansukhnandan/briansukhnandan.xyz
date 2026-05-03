@@ -2,3 +2,64 @@ body {
   background-color: #1c1c19;
   color: #ffffdb;
 }
+
+/* IMPORTANT - make sure rainbow-text-reverse also stays in sync */
+.rainbow-text {
+  display: inline-block;
+
+  background: linear-gradient(
+    90deg,
+    #ff004c,
+    #ff7a00,
+    #ffee00,
+    #2cff00,
+    #00d4ff,
+    #7a00ff,
+    #ff00c8,
+    #ff004c
+  );
+
+  background-size: 300% 300%;
+  animation: rainbow-move 6s linear infinite;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* IMPORTANT - make sure rainbow-text also stays in sync */
+.rainbow-text-reverse {
+  display: inline-block;
+
+  background: linear-gradient(
+    90deg,
+    #ff004c,
+    #ff7a00,
+    #ffee00,
+    #2cff00,
+    #00d4ff,
+    #7a00ff,
+    #ff00c8,
+    #ff004c
+  );
+
+  background-size: 300% 300%;
+  animation: rainbow-move 6s linear infinite reverse;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+@keyframes rainbow-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}

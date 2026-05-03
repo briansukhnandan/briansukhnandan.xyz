@@ -50,19 +50,18 @@ const Header = () => {
 };
 
 const OpeningHtmlTag = () => (
-  <Box style={{ textAlign: "left" }}>
-    {"<Brian>"}
-  </Box>
+  <span className="rainbow-text">
+    {'<Brian>'}
+  </span>
 );
 
 const ClosingHtmlTag = () => (
-  <Box 
-    style={{ 
-      textAlign: "right",
-      bottom: "0px"
-    }}
-  >
-    {"</Brian>"}
+  <Box textAlign="right">
+    <span
+      className="rainbow-text-reverse font-mono"
+    >
+      {'</Brian>'}
+    </span>
   </Box>
 );
 
