@@ -250,7 +250,7 @@ const ProjectsAndHackathonsBody = () => {
               <Td>
                 A train tracker for the NYC Subway which parses the MTA&apos;s realtime GTFS feeds in a digestable format.
                 <br />
-                <a href="https://www.whereisthetrain.lol/" style={{ color: "#00ffd1" }}>
+                <a href="https://where-is-the-train.vercel.app/" style={{ color: "#00ffd1" }}>
                   Click here to see it live!
                 </a>
               </Td>
