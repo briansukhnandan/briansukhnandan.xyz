@@ -391,7 +391,8 @@ const ContactInfoAndLinks = () => {
   const iconMap = {
     GITHUB: <Image src="/images/icons/github.svg" boxSize="32px" alt="github" />,
     LINKEDIN: <Image src="/images/icons/linkedin.svg" boxSize="32px" alt="linkedin" />,
-    YOUTUBE: <Image src="/images/icons/youtube.svg" boxSize="32px" alt="youtube" />
+    YOUTUBE: <Image src="/images/icons/youtube.svg" boxSize="32px" alt="youtube" />,
+    TWITTER: <Image src="/images/icons/twitter.svg" boxSize="32px" alt="twitter" />
   };
 
   return (
@@ -412,6 +413,11 @@ const ContactInfoAndLinks = () => {
             aria-label="YouTube Icon" 
             icon={iconMap["YOUTUBE"]} 
             onClick={() => window.open("https://youtube.com/@deltaregalia")}
+          />
+          <IconButton 
+            aria-label="Twitter Icon" 
+            icon={iconMap["TWITTER"]} 
+            onClick={() => window.open("https://x.com/deltaregalia")}
           />
         </Box>
         <Box paddingTop={"8px"}>
