@@ -31,13 +31,12 @@ var config_default = defineConfig({
             required: true
           },
           {
-            type: "datetime",
+            type: "string",
             name: "date",
             label: "Published date",
             required: true,
             ui: {
-              dateFormat: "YYYY-MM-DD",
-              timeFormat: false
+              component: "date"
             }
           },
           {

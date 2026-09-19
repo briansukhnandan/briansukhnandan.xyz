@@ -22,6 +22,14 @@ const asString = (value: unknown, field: string, filename: string) => {
   return value;
 };
 
+const asDate = (value: unknown, filename: string) => {
+  if (value instanceof Date && !Number.isNaN(value.getTime())) {
+    return value.toISOString().slice(0, 10);
+  }
+
+  return asString(value, "date", filename).slice(0, 10);
+};
+
 const asImages = (value: unknown, filename: string) => {
   if (value === undefined) {
     return [];
@@ -48,7 +56,7 @@ export const getBlogPosts = (): BlogPost[] => {
       return {
         slug: filename.replace(/\.md$/, ""),
         title: asString(frontmatter.title, "title", filename),
-        date: asString(frontmatter.date, "date", filename),
+        date: asDate(frontmatter.date, filename),
         body: content.trim(),
         images: asImages(frontmatter.images, filename),
       };

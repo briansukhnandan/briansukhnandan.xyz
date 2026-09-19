@@ -185,14 +185,6 @@ export type StringFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type DatetimeFilter = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  eq?: InputMaybe<Scalars['String']['input']>;
-  exists?: InputMaybe<Scalars['Boolean']['input']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
 export type ImageFilter = {
   startsWith?: InputMaybe<Scalars['String']['input']>;
   eq?: InputMaybe<Scalars['String']['input']>;
@@ -208,7 +200,7 @@ export type RichTextFilter = {
 
 export type PostFilter = {
   title?: InputMaybe<StringFilter>;
-  date?: InputMaybe<DatetimeFilter>;
+  date?: InputMaybe<StringFilter>;
   images?: InputMaybe<ImageFilter>;
   body?: InputMaybe<RichTextFilter>;
 };
@@ -305,14 +297,6 @@ export type StringFilter = {
   in?: Array<string | null | undefined> | null | undefined;
 };
 
-export type DatetimeFilter = {
-  after?: string | null | undefined;
-  before?: string | null | undefined;
-  eq?: string | null | undefined;
-  exists?: boolean | null | undefined;
-  in?: Array<string | null | undefined> | null | undefined;
-};
-
 export type ImageFilter = {
   startsWith?: string | null | undefined;
   eq?: string | null | undefined;
@@ -328,7 +312,7 @@ export type RichTextFilter = {
 
 export type PostFilter = {
   title?: StringFilter | null | undefined;
-  date?: DatetimeFilter | null | undefined;
+  date?: StringFilter | null | undefined;
   images?: ImageFilter | null | undefined;
   body?: RichTextFilter | null | undefined;
 };

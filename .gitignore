@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/tina/__generated__/.cache/
 /.pnp
 .pnp.js
 .yarn/install-state.gz

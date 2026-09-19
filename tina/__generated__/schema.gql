@@ -107,14 +107,6 @@ input StringFilter {
   in: [String]
 }
 
-input DatetimeFilter {
-  after: String
-  before: String
-  eq: String
-  exists: Boolean
-  in: [String]
-}
-
 input ImageFilter {
   startsWith: String
   eq: String
@@ -130,7 +122,7 @@ input RichTextFilter {
 
 input PostFilter {
   title: StringFilter
-  date: DatetimeFilter
+  date: StringFilter
   images: ImageFilter
   body: RichTextFilter
 }
