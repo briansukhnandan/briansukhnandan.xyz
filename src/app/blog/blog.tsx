@@ -13,6 +13,8 @@ import { useState } from "react";
 
 import type { BlogPost } from "./types";
 
+const formatBlogDate = (date: string) => date.replaceAll("-", "/");
+
 export const BrianBlogBody = ({ posts }: { posts: BlogPost[] }) => {
   const [shownIdx, setShownIdx] = useState(posts.map(() => false));
   return (<>
@@ -39,7 +41,7 @@ export const BrianBlogBody = ({ posts }: { posts: BlogPost[] }) => {
                 }}
                 size={"xs"}
               >
-                {`${blog.date} - ${blog.title}`}
+                {`${formatBlogDate(blog.date)} - ${blog.title}`}
               </Button>
             </Box>
             {
@@ -60,7 +62,7 @@ const BlogEntry = ({ blog }: { blog: BlogPost }) => {
   return (
     <Box textAlign={"left"}>
       <Box sx={{ fontSize: "18px" }}>{ blog.title }</Box>
-      <Box sx={{ pt: "3px", fontSize: "10px", fontStyle: "italic" }}>{ blog.date }</Box>
+      <Box sx={{ pt: "3px", fontSize: "10px", fontStyle: "italic" }}>{ formatBlogDate(blog.date) }</Box>
       <Box sx={{ pt: "10px", fontSize: "12px", whiteSpace: "pre-wrap" }}>{blog.body}</Box>
       {blog.images.length ? (
         <HStack spacing="10px" pt="15px">
