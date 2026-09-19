@@ -392,6 +392,7 @@ const ContactInfoAndLinks = () => {
   const iconMap = {
     GITHUB: <Image src="/images/icons/github.svg" boxSize="32px" alt="github" />,
     LINKEDIN: <Image src="/images/icons/linkedin.svg" boxSize="32px" alt="linkedin" />,
+    STEAM: <Image src="/images/icons/steam.svg" boxSize="32px" alt="steam" />,
     YOUTUBE: <Image src="/images/icons/youtube.svg" boxSize="32px" alt="youtube" />,
     TWITTER: <Image src="/images/icons/twitter.svg" boxSize="32px" alt="twitter" />
   };
@@ -409,6 +410,11 @@ const ContactInfoAndLinks = () => {
             aria-label="LinkedIn Icon" 
             icon={iconMap["LINKEDIN"]} 
             onClick={() => window.open("https://linkedin.com/in/briansukhnandan")}
+          />
+          <IconButton
+            aria-label="Steam Icon"
+            icon={iconMap["STEAM"]}
+            onClick={() => window.open("https://steamcommunity.com/id/dbz0wn4g3")}
           />
           <IconButton 
             aria-label="YouTube Icon" 
