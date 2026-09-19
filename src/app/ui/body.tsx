@@ -99,7 +99,7 @@ export const AboutMeBody = () => {
         onMouseEnter={() => setShowInfoSuggestion(true)} 
         onMouseLeave={() => setShowInfoSuggestion(false)}
       >
-        <Text fontSize="xl">About Me!</Text>
+        <Text fontSize="xl" marginTop="15px">About Me!</Text>
         <Text fontSize="sm">
           {"I'm a Software Engineer currently living my best life in the 💖 of Queens, NY."}
         </Text>
