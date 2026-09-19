@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "tinacms dev -c \"next dev\"",
+    "build": "tinacms build && next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -14,14 +14,17 @@
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "framer-motion": "^11.0.5",
+    "gray-matter": "^4.0.3",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18",
     "react-responsive-carousel": "^3.2.23",
     "react-snowfall": "^2.1.0",
+    "tinacms": "^3.14.0",
     "typed.js": "^2.1.0"
   },
   "devDependencies": {
+    "@tinacms/cli": "^3.0.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

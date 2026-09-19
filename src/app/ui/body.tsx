@@ -22,6 +22,7 @@ import {
 import { ImageCarousel } from "./carousel"
 import { Quotes } from "./quotes";
 import { RailwayBlogBody } from "../blog/blog";
+import type { BlogPost } from "../blog/types";
 
 enum BodyPageIndices {
   ABOUT_ME = 1,
@@ -29,7 +30,7 @@ enum BodyPageIndices {
   BLOG = 3,
 }
 
-export const Body = () => {
+export const Body = ({ posts }: { posts: BlogPost[] }) => {
   const [bodyIdx, setBodyIdx] = useState(BodyPageIndices.ABOUT_ME);
   const [showContactInfo, setShowContactInfo] = useState(false);
   return (
@@ -83,7 +84,7 @@ export const Body = () => {
         </Box>
       </Center>
       { showContactInfo && <ContactInfoAndLinks /> }
-      { getBodyContent(bodyIdx) }
+      {getBodyContent(bodyIdx, posts)}
       <Box paddingTop={8} paddingBottom={"5px"}>
         <Center
           fontSize={"small"}
@@ -111,10 +112,10 @@ export const Body = () => {
   )
 }
 
-const getBodyContent = (bodyIdx: number) => ({
+const getBodyContent = (bodyIdx: number, posts: BlogPost[]) => ({
   [BodyPageIndices.ABOUT_ME]: <AboutMeBody />,
   [BodyPageIndices.PROJECTS]: <ProjectsAndHackathonsBody />,
-  [BodyPageIndices.BLOG]: <RailwayBlogBody />
+  [BodyPageIndices.BLOG]: <RailwayBlogBody posts={posts} />,
 })[bodyIdx];
 
 const AboutMeBody = () => {

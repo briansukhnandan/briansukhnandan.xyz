@@ -1,6 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  async rewrites() {
+    return [
+      {
+        source: "/admin",
+        destination: "/admin/index.html",
+      },
+    ];
+  },
   async redirects() {
     const RESUME_URL =
       "https://docs.google.com/document/d/1p9_AOGbrJWWhp3-EmGflooyrsfgvVG8EaOxXa0mbgG0"

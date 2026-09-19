@@ -1,4 +1,6 @@
-import { 
+"use client";
+
+import {
   Box, 
   Button, 
   Center, 
@@ -7,26 +9,12 @@ import {
   Image, 
   VStack
 } from "@chakra-ui/react"
-import blogs from "./blogs.json"
 import { useState } from "react";
 
-type BlogEntry = {
-  title: string;
-  body: string;
-  date: string;
-  images?: string[];
-};
+import type { BlogPost } from "./types";
 
-const toBlogEntry = (rawBlog: any): BlogEntry => {
-  if (rawBlog.title && rawBlog.body && rawBlog.date) {
-    return rawBlog as BlogEntry;
-  }
-  throw new Error("Blog is invalid!");
-}
-
-export const RailwayBlogBody = () => {
-  const formattedBlogs = blogs.map(blog => toBlogEntry(blog)).reverse();
-  const [shownIdx, setShownIdx] = useState(formattedBlogs.map(_ => false));
+export const RailwayBlogBody = ({ posts }: { posts: BlogPost[] }) => {
+  const [shownIdx, setShownIdx] = useState(posts.map(() => false));
   return (<>
     <Box 
       sx={{ 
@@ -40,8 +28,8 @@ export const RailwayBlogBody = () => {
     </Box>
     <Center sx={{ pt: "24px", margin: "auto", width: "50%" }}>
       <VStack>
-        { formattedBlogs.map((blog, idx) => (
-          <VStack key={blog.title}>
+        {posts.map((blog, idx) => (
+          <VStack key={blog.slug}>
             <Box>
               <Button 
                 onClick={() => {
@@ -57,7 +45,7 @@ export const RailwayBlogBody = () => {
             {
               shownIdx[idx] ? (
                 <Box pt={"10px"}>
-                  <BlogEntry key={blog.title} blog={blog} />
+                  <BlogEntry blog={blog} />
                 </Box>
               ) : null
             }
@@ -68,17 +56,17 @@ export const RailwayBlogBody = () => {
   </>);
 }
 
-const BlogEntry = ({ blog }: { blog: BlogEntry }) => {
+const BlogEntry = ({ blog }: { blog: BlogPost }) => {
   return (
     <Box textAlign={"left"}>
       <Box sx={{ fontSize: "18px" }}>{ blog.title }</Box>
       <Box sx={{ pt: "3px", fontSize: "10px", fontStyle: "italic" }}>{ blog.date }</Box>
-      <Box sx={{ pt: "10px", fontSize: "12px" }}>{ blog.body }</Box>
-      { blog.images?.length ? (
+      <Box sx={{ pt: "10px", fontSize: "12px", whiteSpace: "pre-wrap" }}>{blog.body}</Box>
+      {blog.images.length ? (
         <HStack spacing="10px" pt="15px">
-          { blog.images.map(imageUrl => (
+          {blog.images.map((imageUrl) => (
             <Box key={imageUrl} sx={{ maxWidth: "50%", maxHeight: "50%" }}>
-              <Image src={`images/blog/${imageUrl}`} alt={""} />
+              <Image src={imageUrl} alt="" />
             </Box>
           ))}
         </HStack>
