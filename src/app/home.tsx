@@ -42,8 +42,8 @@ const Footer = () => (
       fontSize="small"
       background="linear-gradient(to right, #ff5722, #eeff41, #43a047, #2196f3, #7e57c2, #f48fb1, #ef5350)"
       sx={{
-        "-webkit-background-clip": "text",
-        "-webkit-text-fill-color": "transparent",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
       }}
     >
       <Quotes />
