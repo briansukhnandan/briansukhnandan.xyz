@@ -13,7 +13,7 @@ import { useState } from "react";
 
 import type { BlogPost } from "./types";
 
-export const RailwayBlogBody = ({ posts }: { posts: BlogPost[] }) => {
+export const BrianBlogBody = ({ posts }: { posts: BlogPost[] }) => {
   const [shownIdx, setShownIdx] = useState(posts.map(() => false));
   return (<>
     <Box 
@@ -24,7 +24,7 @@ export const RailwayBlogBody = ({ posts }: { posts: BlogPost[] }) => {
         pt: "16px" 
       }}
     >
-      <u>{"Brian's Railway Blog"}</u>
+      <u>{"Brian's Blog"}</u>
     </Box>
     <Center sx={{ pt: "24px", margin: "auto", width: "50%" }}>
       <VStack>

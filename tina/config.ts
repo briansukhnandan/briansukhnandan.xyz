@@ -23,7 +23,7 @@ export default defineConfig({
     collections: [
       {
         name: "post",
-        label: "Railway blog posts",
+        label: "Brian's blog posts",
         path: "content/blog",
         format: "md",
         fields: [

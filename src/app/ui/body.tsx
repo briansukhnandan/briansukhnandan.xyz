@@ -21,7 +21,7 @@ import {
 } from "@chakra-ui/react"
 import { ImageCarousel } from "./carousel"
 import { Quotes } from "./quotes";
-import { RailwayBlogBody } from "../blog/blog";
+import { BrianBlogBody } from "../blog/blog";
 import type { BlogPost } from "../blog/types";
 
 enum BodyPageIndices {
@@ -115,7 +115,7 @@ export const Body = ({ posts }: { posts: BlogPost[] }) => {
 const getBodyContent = (bodyIdx: number, posts: BlogPost[]) => ({
   [BodyPageIndices.ABOUT_ME]: <AboutMeBody />,
   [BodyPageIndices.PROJECTS]: <ProjectsAndHackathonsBody />,
-  [BodyPageIndices.BLOG]: <RailwayBlogBody posts={posts} />,
+  [BodyPageIndices.BLOG]: <BrianBlogBody posts={posts} />,
 })[bodyIdx];
 
 const AboutMeBody = () => {
