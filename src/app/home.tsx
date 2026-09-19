@@ -63,7 +63,7 @@ const useGetOscillatingColor = () => {
   useEffect(() => {
     const timeoutId = setTimeout(() => setColorIdx((colorIdx + 1) % colors.length), 750);
     return () => clearTimeout(timeoutId);
-  }, [colorIdx]);
+  }, [colorIdx, colors.length]);
 
   return colors[colorIdx];
 };
