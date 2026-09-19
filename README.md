@@ -22,6 +22,6 @@ Photos uploaded from Tina are stored in `public/images/blog/` and published with
 
 ### Local setup
 
-Copy `.env.example` to `.env` and set `NEXT_PUBLIC_TINA_CLIENT_ID` and `TINA_TOKEN` from the TinaCloud project. Keep `.env` private.
+Copy `.env.example` to `.env` and set `NEXT_PUBLIC_TINA_CLIENT_ID` and `TINA_TOKEN` from the TinaCloud project.
 
-`npm run dev` starts the local Tina editor and the Next.js site. The local editor writes directly to your working tree; use the deployed `/admin` editor to commit published posts to GitHub.
+`npm run dev` starts a local Tina editor and the site. The local TinaCMS instance will just write a file locally instead of publishing a commit to the repo.
