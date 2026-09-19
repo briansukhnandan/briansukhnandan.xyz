@@ -63,3 +63,131 @@ body {
     background-position: 300% 50%;
   }
 }
+
+.train-widget {
+  width: min(92vw, 400px);
+  margin: 30px auto 0;
+  border: 1px solid #38a169;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.24);
+  box-shadow: 0 0 16px rgba(56, 161, 105, 0.12);
+  color: #ffffdb;
+  font-family: var(--font-mono, monospace);
+  text-align: left;
+}
+
+.train-widget-running { border-color: #38a169; }
+.train-widget-stopped { border-color: #e53e3e; }
+.train-widget-stopped .train-widget-heading { color: #fc8181; }
+
+.train-widget-heading,
+.train-widget-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px;
+  font-size: 11px;
+}
+
+.train-widget-heading {
+  border-bottom: 1px dashed rgba(255, 255, 219, 0.28);
+  color: #7cff7c;
+}
+
+.train-widget-track {
+  position: relative;
+  height: 58px;
+  overflow: hidden;
+  background: linear-gradient(to bottom, transparent 20%, rgba(255, 255, 219, 0.05) 20% 21%, transparent 21%);
+}
+
+.train-widget-locomotive-container {
+  position: absolute;
+  z-index: 2;
+  top: 8px;
+  left: -48px;
+  font-size: 29px;
+  line-height: 1;
+  filter: drop-shadow(0 1px 1px #000);
+  animation: train-widget-pass var(--train-widget-duration, 22s) linear infinite;
+  will-change: transform;
+}
+
+.train-widget-paused {
+  animation-play-state: paused;
+}
+
+.train-widget-locomotive {
+  display: block;
+  animation: train-widget-face-direction var(--train-widget-duration, 22s) steps(1, end) infinite;
+}
+
+.train-widget-paused .train-widget-locomotive {
+  animation-play-state: paused;
+}
+
+.train-widget-rail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #a1a1a1;
+  box-shadow: 0 1px 0 #333;
+}
+
+.train-widget-rail-top { bottom: 14px; }
+.train-widget-rail-bottom { bottom: 6px; }
+
+.train-widget-ties {
+  position: absolute;
+  right: 0;
+  bottom: 4px;
+  left: 0;
+  height: 14px;
+  background: repeating-linear-gradient(90deg, transparent 0 13px, #73513b 13px 16px, transparent 16px 27px);
+  opacity: 0.85;
+}
+
+.train-widget-actions {
+  border-top: 1px dashed rgba(255, 255, 219, 0.2);
+}
+
+.train-widget-motion-controls,
+.train-widget-speed-control {
+  display: flex;
+  align-items: center;
+}
+
+.train-widget-motion-controls { gap: 6px; }
+
+.train-widget-speed-control {
+  gap: 1px;
+  padding: 0 2px;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  border-radius: 4px;
+  color: #ffffdb;
+  font-size: 9px;
+}
+
+.train-widget-speed-control button {
+  min-width: 18px;
+  height: 20px;
+  padding: 0 3px;
+}
+
+@keyframes train-widget-pass {
+  0%, 100% { left: -48px; }
+  45%, 50% { left: calc(100% + 48px); }
+  95% { left: -48px; }
+}
+
+@keyframes train-widget-face-direction {
+  0%, 49% { transform: scaleX(-1); }
+  50%, 99% { transform: scaleX(1); }
+  100% { transform: scaleX(-1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .train-widget-locomotive-container { animation: none; transform: translateX(145px); }
+}

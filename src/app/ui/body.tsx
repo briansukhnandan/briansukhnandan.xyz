@@ -21,6 +21,7 @@ import {
   UnorderedList,
 } from "@chakra-ui/react"
 import { ImageCarousel } from "./carousel"
+import { TrainWidget } from "./train";
 export const SiteNavigation = () => {
   const [showContactInfo, setShowContactInfo] = useState(false);
   return (
@@ -162,6 +163,7 @@ export const AboutMeBody = () => {
           )}
         </Box>
       </Box>
+      <TrainWidget />
     </Box>
   )
 }
