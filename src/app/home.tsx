@@ -1,13 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Box } from "@chakra-ui/react";
+import { useEffect, useState, type ReactNode } from "react";
+import { Box, Center } from "@chakra-ui/react";
 
-import { Body } from "./ui/body";
+import { AboutMeBody, SiteNavigation } from "./ui/body";
+import { Quotes } from "./ui/quotes";
 import { SnowEffect, ToggleSnowButton } from "./ui/snow";
-import type { BlogPost } from "./blog/types";
 
-export const Home = ({ posts }: { posts: BlogPost[] }) => {
+export const Home = () => <SiteShell><AboutMeBody /></SiteShell>;
+
+export const SiteShell = ({
+  children,
+  showNavigation = true,
+}: {
+  children: ReactNode;
+  showNavigation?: boolean;
+}) => {
   const [showSnow, setShowSnow] = useState(true);
   const borderColor = useGetOscillatingColor();
 
@@ -18,12 +26,30 @@ export const Home = ({ posts }: { posts: BlogPost[] }) => {
         <OpeningHtmlTag />
         <ToggleSnowButton toggleFn={() => setShowSnow(!showSnow)} />
         <Header />
-        <Body posts={posts} />
+        {showNavigation ? <SiteNavigation /> : null}
+        {children}
+        <Footer />
         <ClosingHtmlTag />
       </Box>
     </main>
   );
 };
+
+const Footer = () => (
+  <Box paddingTop={8} paddingBottom="5px">
+    <Center
+      textAlign="center"
+      fontSize="small"
+      background="linear-gradient(to right, #ff5722, #eeff41, #43a047, #2196f3, #7e57c2, #f48fb1, #ef5350)"
+      sx={{
+        "-webkit-background-clip": "text",
+        "-webkit-text-fill-color": "transparent",
+      }}
+    >
+      <Quotes />
+    </Center>
+  </Box>
+);
 
 const Header = () => {
   const borderColor = useGetOscillatingColor();

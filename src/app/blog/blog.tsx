@@ -1,22 +1,19 @@
-"use client";
-
 import {
-  Box, 
-  Button, 
-  Center, 
-  Divider, 
-  HStack, 
-  Image, 
-  VStack
-} from "@chakra-ui/react"
-import { useState } from "react";
+  Box,
+  Button,
+  Center,
+  Image,
+  Link as ChakraLink,
+  VStack,
+} from "@chakra-ui/react";
+import Link from "next/link";
+import ReactMarkdown from "react-markdown";
 
 import type { BlogPost } from "./types";
 
 const formatBlogDate = (date: string) => date.replaceAll("-", "/");
 
 export const BrianBlogBody = ({ posts }: { posts: BlogPost[] }) => {
-  const [shownIdx, setShownIdx] = useState(posts.map(() => false));
   return (<>
     <Box 
       sx={{ 
@@ -30,27 +27,17 @@ export const BrianBlogBody = ({ posts }: { posts: BlogPost[] }) => {
     </Box>
     <Center sx={{ pt: "24px", margin: "auto", width: "50%" }}>
       <VStack>
-        {posts.map((blog, idx) => (
+        {posts.map((blog) => (
           <VStack key={blog.slug}>
             <Box>
               <Button 
-                onClick={() => {
-                  const modified = shownIdx.slice();
-                  modified[idx] = !modified[idx];
-                  setShownIdx(modified);
-                }}
+                as={Link}
+                href={`/blog/${blog.slug}`}
                 size={"xs"}
               >
                 {`${formatBlogDate(blog.date)} - ${blog.title}`}
               </Button>
             </Box>
-            {
-              shownIdx[idx] ? (
-                <Box pt={"10px"}>
-                  <BlogEntry blog={blog} />
-                </Box>
-              ) : null
-            }
           </VStack>
         ))}
       </VStack>
@@ -58,29 +45,62 @@ export const BrianBlogBody = ({ posts }: { posts: BlogPost[] }) => {
   </>);
 }
 
-const BlogEntry = ({ blog }: { blog: BlogPost }) => {
+export const BlogPostContent = ({ blog }: { blog: BlogPost }) => {
   return (
-    <Box textAlign={"left"}>
-      <Box sx={{ fontSize: "18px" }}>{ blog.title }</Box>
-      <Box sx={{ pt: "3px", fontSize: "10px", fontStyle: "italic" }}>{ formatBlogDate(blog.date) }</Box>
-      <Box sx={{ pt: "10px", fontSize: "12px", whiteSpace: "pre-wrap" }}>{blog.body}</Box>
+    <Box
+      as="article"
+      width="100%"
+      maxWidth="760px"
+      margin="0 auto"
+      padding={{ base: "0 20px 36px", md: "0 32px 48px" }}
+      textAlign="left"
+    >
+      <Box as="h1" fontSize={{ base: "22px", md: "26px" }} lineHeight="short" fontWeight="semibold">
+        {blog.title}
+      </Box>
+      <Box pt="6px" fontSize="11px" fontStyle="italic" color="whiteAlpha.700">
+        {formatBlogDate(blog.date)}
+      </Box>
+      <Box
+        pt="20px"
+        fontSize={{ base: "14px", md: "15px" }}
+        lineHeight="tall"
+        sx={{
+          "& p": { marginBottom: "18px" },
+          "& ul, & ol": { paddingLeft: "24px", marginBottom: "18px" },
+          "& li + li": { marginTop: "6px" },
+        }}
+      >
+        <ReactMarkdown
+          components={{
+            a: ({ children, href }) =>
+              href ? (
+                <ChakraLink href={href} color="teal.200" textDecoration="underline" isExternal>
+                  {children}
+                </ChakraLink>
+              ) : (
+                <>{children}</>
+              ),
+          }}
+        >
+          {blog.body}
+        </ReactMarkdown>
+      </Box>
       {blog.images.length ? (
-        <HStack spacing="10px" pt="15px">
+        <VStack spacing="18px" pt="10px" align="center">
           {blog.images.map((imageUrl) => (
-            <Box key={imageUrl} sx={{ maxWidth: "50%", maxHeight: "50%" }}>
-              <Image src={imageUrl} alt="" />
+            <Box key={imageUrl} width="100%" display="flex" justifyContent="center">
+              <Image
+                src={imageUrl}
+                alt={`${blog.title} photo`}
+                maxWidth="100%"
+                maxHeight="720px"
+                objectFit="contain"
+              />
             </Box>
           ))}
-        </HStack>
+        </VStack>
       ) : null}
-      <Center>
-        <Divider 
-          sx={{ 
-            width: "50%", 
-            margin: "25px" 
-          }}
-        />
-      </Center>
     </Box>
   );
 }

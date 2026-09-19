@@ -63,3 +63,6 @@ export const getBlogPosts = (): BlogPost[] => {
     })
     .sort((first, second) => second.date.localeCompare(first.date));
 };
+
+export const getBlogPost = (slug: string): BlogPost | undefined =>
+  getBlogPosts().find((post) => post.slug === slug);

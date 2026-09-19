@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react";
+import Link from "next/link";
 import {
   Box,
   Button,
@@ -20,36 +21,27 @@ import {
   UnorderedList,
 } from "@chakra-ui/react"
 import { ImageCarousel } from "./carousel"
-import { Quotes } from "./quotes";
-import { BrianBlogBody } from "../blog/blog";
-import type { BlogPost } from "../blog/types";
-
-enum BodyPageIndices {
-  ABOUT_ME = 1,
-  PROJECTS = 2,
-  BLOG = 3,
-}
-
-export const Body = ({ posts }: { posts: BlogPost[] }) => {
-  const [bodyIdx, setBodyIdx] = useState(BodyPageIndices.ABOUT_ME);
+export const SiteNavigation = () => {
   const [showContactInfo, setShowContactInfo] = useState(false);
   return (
     <Box>
       <Center>
         <Box paddingTop="10px">
           <Button 
+            as={Link}
+            href="/home"
             size="xs"
             variant="link"
             colorScheme="red"
-            onClick={() => setBodyIdx(BodyPageIndices.ABOUT_ME)}
           >
             Home
           </Button>
           <Button 
+            as={Link}
+            href="/projects"
             size="xs"
             variant="link"
             colorScheme="orange"
-            onClick={() => setBodyIdx(BodyPageIndices.PROJECTS)}
             paddingLeft="12px"
           >
             Projects
@@ -64,10 +56,11 @@ export const Body = ({ posts }: { posts: BlogPost[] }) => {
             Resumé
           </Button>
           <Button 
+            as={Link}
+            href="/blog"
             size="xs"
             variant="link"
             colorScheme="green"
-            onClick={() => setBodyIdx(BodyPageIndices.BLOG)}
             paddingLeft="12px"
           >
             Blog
@@ -84,41 +77,11 @@ export const Body = ({ posts }: { posts: BlogPost[] }) => {
         </Box>
       </Center>
       { showContactInfo && <ContactInfoAndLinks /> }
-      {getBodyContent(bodyIdx, posts)}
-      <Box paddingTop={8} paddingBottom={"5px"}>
-        <Center
-          fontSize={"small"}
-          background="
-            linear-gradient(
-              to right,
-              #ff5722,
-              #eeff41,
-              #43a047,
-              #2196f3,
-              #7e57c2,
-              #f48fb1,
-              #ef5350
-            )
-          "
-          sx={{
-            "-webkit-background-clip": "text",
-            "-webkit-text-fill-color": "transparent"
-          }}
-        >
-          <Quotes />
-        </Center>
-      </Box>
     </Box>
   )
 }
 
-const getBodyContent = (bodyIdx: number, posts: BlogPost[]) => ({
-  [BodyPageIndices.ABOUT_ME]: <AboutMeBody />,
-  [BodyPageIndices.PROJECTS]: <ProjectsAndHackathonsBody />,
-  [BodyPageIndices.BLOG]: <BrianBlogBody posts={posts} />,
-})[bodyIdx];
-
-const AboutMeBody = () => {
+export const AboutMeBody = () => {
   const [showInfoSuggestion, setShowInfoSuggestion] = useState(false);
   return (
     <Box textAlign={"center"}>
@@ -219,7 +182,7 @@ const HyperlinkedTableCell = ({
   )
 }
 
-const ProjectsAndHackathonsBody = () => {
+export const ProjectsAndHackathonsBody = () => {
   const DEFAULT_LINK_COLOR = "#00ffd1";
   return (
     <Box paddingTop={2}>
