@@ -29,7 +29,7 @@ export const SiteShell = ({
       <Box borderColor={borderColor} borderWidth={2.5} minHeight="100vh" height="100%">
         <OpeningHtmlTag />
         <ToggleSnowButton toggleFn={() => setShowSnow(!showSnow)} />
-        <Header />
+        <Header color={borderColor} />
         {showNavigation ? <SiteNavigation /> : null}
         {children}
         <Footer />
@@ -55,15 +55,13 @@ const Footer = () => (
   </Box>
 );
 
-const Header = () => {
-  const borderColor = useGetOscillatingColor();
-
+const Header = ({ color }: { color: string }) => {
   return (
     <Box
       sx={{
         textAlign: "center",
         paddingTop: "10px",
-        color: borderColor,
+        color,
       }}
     >
       <pre>
