@@ -7,7 +7,11 @@ import { AboutMeBody, SiteNavigation } from "./ui/body";
 import { Quotes } from "./ui/quotes";
 import { SnowEffect, ToggleSnowButton } from "./ui/snow";
 
-export const Home = () => <SiteShell><AboutMeBody /></SiteShell>;
+export const Home = ({ carouselImages }: { carouselImages: string[] }) => (
+  <SiteShell>
+    <AboutMeBody carouselImages={carouselImages} />
+  </SiteShell>
+);
 
 export const SiteShell = ({
   children,

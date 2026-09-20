@@ -82,7 +82,7 @@ export const SiteNavigation = () => {
   )
 }
 
-export const AboutMeBody = () => {
+export const AboutMeBody = ({ carouselImages }: { carouselImages: string[] }) => {
   const [showInfoSuggestion, setShowInfoSuggestion] = useState(false);
   return (
     <Box textAlign={"center"}>
@@ -92,7 +92,7 @@ export const AboutMeBody = () => {
             paddingTop: 4,
             maxWidth: 400,
           }}>
-          <ImageCarousel />
+          <ImageCarousel images={carouselImages} />
         </Box>
       </Center>
       <Box

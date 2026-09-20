@@ -59,10 +59,13 @@ type Query {
   document(collection: String, relativePath: String): DocumentNode!
   post(relativePath: String): Post!
   postConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PostFilter): PostConnection!
+  home(relativePath: String): Home!
+  homeConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: HomeFilter): HomeConnection!
 }
 
 input DocumentFilter {
   post: PostFilter
+  home: HomeFilter
 }
 
 type DocumentConnectionEdges {
@@ -88,7 +91,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Post | Folder
+union DocumentNode = Post | Home | Folder
 
 type Post implements Node & Document {
   title: String!
@@ -138,6 +141,28 @@ type PostConnection implements Connection {
   edges: [PostConnectionEdges]
 }
 
+type Home implements Node & Document {
+  carouselImages: [String]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input HomeFilter {
+  carouselImages: ImageFilter
+}
+
+type HomeConnectionEdges {
+  cursor: String!
+  node: Home
+}
+
+type HomeConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [HomeConnectionEdges]
+}
+
 type Mutation {
   addPendingDocument(collection: String!, relativePath: String!, template: String): DocumentNode!
   updateDocument(collection: String, relativePath: String!, params: DocumentUpdateMutation!): DocumentNode!
@@ -146,15 +171,19 @@ type Mutation {
   createFolder(collection: String, relativePath: String!): DocumentNode!
   updatePost(relativePath: String!, params: PostMutation!): Post!
   createPost(relativePath: String!, params: PostMutation!): Post!
+  updateHome(relativePath: String!, params: HomeMutation!): Home!
+  createHome(relativePath: String!, params: HomeMutation!): Home!
 }
 
 input DocumentUpdateMutation {
   post: PostMutation
+  home: HomeMutation
   relativePath: String
 }
 
 input DocumentMutation {
   post: PostMutation
+  home: HomeMutation
 }
 
 input PostMutation {
@@ -162,6 +191,10 @@ input PostMutation {
   date: String
   images: [String]
   body: RichText
+}
+
+input HomeMutation {
+  carouselImages: [String]
 }
 
 schema {

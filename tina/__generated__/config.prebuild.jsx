@@ -11,7 +11,7 @@ var config_default = defineConfig({
   },
   media: {
     tina: {
-      mediaRoot: "images/blog",
+      mediaRoot: "images",
       publicFolder: "public"
     }
   },
@@ -43,7 +43,8 @@ var config_default = defineConfig({
             type: "image",
             name: "images",
             label: "Photos",
-            list: true
+            list: true,
+            uploadDir: () => "blog"
           },
           {
             type: "rich-text",
@@ -51,6 +52,22 @@ var config_default = defineConfig({
             label: "Post",
             isBody: true,
             required: true
+          }
+        ]
+      },
+      {
+        name: "home",
+        label: "Home page",
+        path: "content/home",
+        format: "json",
+        fields: [
+          {
+            type: "image",
+            name: "carouselImages",
+            label: "Carousel images",
+            description: "Add, remove, or drag images to set the carousel order.",
+            list: true,
+            uploadDir: () => "carousel"
           }
         ]
       }

@@ -5,3 +5,8 @@ fragment PostParts on Post {
   images
   body
 }
+
+fragment HomeParts on Home {
+  __typename
+  carouselImages
+}

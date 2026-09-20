@@ -5,15 +5,7 @@ import { Box, Image } from "@chakra-ui/react";
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
 
-const IMAGES = [
-  "/images/carousel/1.png",
-  "/images/carousel/2.png",
-  "/images/carousel/3.png",
-  "/images/carousel/4.png",
-  "/images/carousel/5.png",
-];
-
-export const ImageCarousel = () => {
+export const ImageCarousel = ({ images }: { images: string[] }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true },
     [Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })],
@@ -37,11 +29,15 @@ export const ImageCarousel = () => {
     };
   }, [emblaApi, onSelect]);
 
+  if (images.length === 0) {
+    return null;
+  }
+
   return (
     <Box position="relative" role="region" aria-label="Photo carousel">
       <Box overflow="hidden" ref={emblaRef}>
         <Box display="flex" sx={{ touchAction: "pan-y pinch-zoom" }}>
-          {IMAGES.map((image, index) => (
+          {images.map((image, index) => (
             <Box flex="0 0 100%" key={image} minW={0}>
               <Image
                 alt={`Carousel image ${index + 1}`}
@@ -89,7 +85,7 @@ export const ImageCarousel = () => {
       </Box>
 
       <Box display="flex" justifyContent="center" gap={2} mt={2}>
-        {IMAGES.map((image, index) => (
+        {images.map((image, index) => (
           <Box
             as="button"
             aria-label={`Go to image ${index + 1}`}

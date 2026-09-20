@@ -20,6 +20,14 @@ Posts live in `content/blog/` as Markdown files and are managed through TinaCMS.
 
 Photos uploaded from Tina are stored in `public/images/blog/` and published with the post.
 
+## Managing carousel images
+
+1. Visit `/admin` and open **Home page**.
+2. Use **Carousel images** to add, remove, or drag images into the desired order.
+3. Save the document. TinaCloud commits the updated `content/home/index.json` file and Vercel deploys it.
+
+Carousel uploads are stored in `public/images/carousel/`; blog uploads remain in `public/images/blog/`.
+
 ### Local setup
 
 Copy `.env.example` to `.env` and set `NEXT_PUBLIC_TINA_CLIENT_ID` and `TINA_TOKEN` from the TinaCloud project.
