@@ -5,7 +5,6 @@ import { Box, Center } from "@chakra-ui/react";
 
 import { AboutMeBody, SiteNavigation } from "./ui/body";
 import { Quotes } from "./ui/quotes";
-import { SnowEffect, ToggleSnowButton } from "./ui/snow";
 
 export const Home = ({ carouselImages }: { carouselImages: string[] }) => (
   <SiteShell>
@@ -20,15 +19,12 @@ export const SiteShell = ({
   children: ReactNode;
   showNavigation?: boolean;
 }) => {
-  const [showSnow, setShowSnow] = useState(true);
   const borderColor = useGetOscillatingColor();
 
   return (
     <main>
-      {showSnow ? <SnowEffect /> : null}
       <Box borderColor={borderColor} borderWidth={2.5} minHeight="100vh" height="100%">
         <OpeningHtmlTag />
-        <ToggleSnowButton toggleFn={() => setShowSnow(!showSnow)} />
         <Header color={borderColor} />
         {showNavigation ? <SiteNavigation /> : null}
         {children}
