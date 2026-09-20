@@ -30,8 +30,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <SiteShell showNavigation={false}>
       <Center pt={{ base: "20px", md: "28px" }}>
-        <Button as={Link} href="/blog" size="xs" variant="link" colorScheme="green">
-          ← Back to blog
+        <Button as={Link} href="/writings" size="xs" variant="link" colorScheme="green">
+          ← Back to writings
         </Button>
       </Center>
       <Box pt={{ base: "24px", md: "32px" }}>

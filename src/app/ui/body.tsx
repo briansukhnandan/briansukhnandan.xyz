@@ -58,13 +58,13 @@ export const SiteNavigation = () => {
           </Button>
           <Button 
             as={Link}
-            href="/blog"
+            href="/writings"
             size="xs"
             variant="link"
             colorScheme="green"
             paddingLeft="12px"
           >
-            Blog
+            Writings
           </Button>
           <Button
             size="xs"

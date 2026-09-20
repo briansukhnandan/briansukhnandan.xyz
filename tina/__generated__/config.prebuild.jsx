@@ -19,7 +19,7 @@ var config_default = defineConfig({
     collections: [
       {
         name: "post",
-        label: "Brian's blog posts",
+        label: "Writings",
         path: "content/blog",
         format: "md",
         fields: [
@@ -49,7 +49,7 @@ var config_default = defineConfig({
           {
             type: "rich-text",
             name: "body",
-            label: "Post",
+            label: "Writing",
             isBody: true,
             required: true
           }

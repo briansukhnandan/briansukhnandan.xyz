@@ -7,18 +7,18 @@
 - I wanted a site a little more minimalistic. I felt my last personal website had a lot going on, not to mention the code itself was starting to get unmaintainable because it was developed when i was beginning to learn HTML/CSS/JS fully.
 - My site is inspired slightly by Luke Smith (lukesmith.xyz), however I strive to have a little more "bloat" to my website than some would like.
 
-## Adding a Blog Entry
+## Adding a Writing
 
-Posts live in `content/blog/` as Markdown files and are managed through TinaCMS.
+Writings live in `content/blog/` as Markdown files and are managed through TinaCMS.
 
-### Publish a post
+### Publish a writing
 
 1. Visit `/admin` on the deployed site and sign in with the TinaCloud account authorized for this project.
-2. Create or edit a post, add its date, write its body, and upload any photos.
-3. Save the post. TinaCloud commits the change directly to `main`.
-4. Vercel detects that commit and deploys the published post.
+2. Create or edit a writing, add its date, write its body, and upload any photos.
+3. Save the writing. TinaCloud commits the change directly to `main`.
+4. Vercel detects that commit and deploys the published writing.
 
-Photos uploaded from Tina are stored in `public/images/blog/` and published with the post.
+Photos uploaded from Tina are stored in `public/images/blog/` and published with the writing.
 
 ## Managing carousel images
 

@@ -15,6 +15,16 @@ const nextConfig = {
 
     return [
       {
+        source: "/blog",
+        destination: "/writings",
+        permanent: true,
+      },
+      {
+        source: "/blog/:slug",
+        destination: "/writings/:slug",
+        permanent: true,
+      },
+      {
         source: "/resume",
         destination: RESUME_URL,
         // Idk if i want to migrate off of Google Drive at some point

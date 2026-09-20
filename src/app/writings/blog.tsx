@@ -13,18 +13,8 @@ import type { BlogPost } from "./types";
 
 const formatBlogDate = (date: string) => date.replaceAll("-", "/");
 
-export const BrianBlogBody = ({ posts }: { posts: BlogPost[] }) => {
-  return (<>
-    <Box 
-      sx={{ 
-        fontSize: "28px", 
-        textAlign: "center", 
-        fontStyle: "italic",
-        pt: "16px" 
-      }}
-    >
-      <u>{"Brian's Blog"}</u>
-    </Box>
+export const WritingsList = ({ posts }: { posts: BlogPost[] }) => {
+  return (
     <Center sx={{ pt: "24px", margin: "auto", width: "50%" }}>
       <VStack>
         {posts.map((blog) => (
@@ -32,7 +22,7 @@ export const BrianBlogBody = ({ posts }: { posts: BlogPost[] }) => {
             <Box>
               <Button 
                 as={Link}
-                href={`/blog/${blog.slug}`}
+                href={`/writings/${blog.slug}`}
                 size={"xs"}
               >
                 {`${formatBlogDate(blog.date)} - ${blog.title}`}
@@ -42,7 +32,7 @@ export const BrianBlogBody = ({ posts }: { posts: BlogPost[] }) => {
         ))}
       </VStack>
     </Center>
-  </>);
+  );
 }
 
 export const BlogPostContent = ({ blog }: { blog: BlogPost }) => {

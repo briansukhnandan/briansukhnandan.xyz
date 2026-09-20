@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 
-import type { BlogPost } from "@/app/blog/types";
+import type { BlogPost } from "@/app/writings/types";
 
 const postsDirectory = path.join(process.cwd(), "content", "blog");
 
