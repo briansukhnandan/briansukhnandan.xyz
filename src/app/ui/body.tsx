@@ -48,10 +48,11 @@ export const SiteNavigation = () => {
             Projects
           </Button>
           <Button 
+            as={Link}
+            href="/resume"
             size="xs"
             variant="link"
             colorScheme="yellow"
-            onClick={() => window.open("https://docs.google.com/document/d/1p9_AOGbrJWWhp3-EmGflooyrsfgvVG8EaOxXa0mbgG0/edit?usp=sharing")}
             paddingLeft="12px"
           >
             Resumé
